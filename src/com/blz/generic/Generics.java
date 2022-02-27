@@ -1,36 +1,44 @@
 package com.blz.generic;
 
 public class Generics<T extends Comparable<T>> {
-
-	T toCompare1, toCompare2, toCompare3;
-
-	public Generics(T tocompare1, T tocompare2, T tocompare3) {
-		this.toCompare1 = tocompare1;
-		this.toCompare2 = tocompare2;
-		this.toCompare3 = tocompare3;
-	}
-
-	public void testMaximum() {
-		Generics.findMaximum(this.toCompare1, this.toCompare2, this.toCompare3);
-	}
-
-	public static <T extends Comparable<T>> void findMaximum(T firstNumber, T secondNumber, T thirdNumber) {
-		T maximumNumber;
-
-		if (firstNumber.compareTo(secondNumber) > 0 && firstNumber.compareTo(thirdNumber) > 0) {
-			maximumNumber = firstNumber;
-		} else if (secondNumber.compareTo(firstNumber) > 0 && secondNumber.compareTo(thirdNumber) > 0) {
-			maximumNumber = secondNumber;
-		} else {
-			maximumNumber = thirdNumber;
+	public T getMax(T first, T second, T three) {
+		T max = first;
+		if (second.compareTo(max) > 0) {
+			max = second;
 		}
+		if (three.compareTo(max) > 0) {
+			max = three;
+		}
+		printMax(first, second, three, max);
+		return max;
+	}
 
-		System.out.println("The maximum number is: " + maximumNumber);
+	public static String getMaxStr(String a, String b, String c) {
+		String max = a;
+		if (b.compareTo(max) > 0) {
+			max = b;
+		}
+		if (c.compareTo(max) > 0) {
+			max = c;
+		}
+		printMax(a, b, c, max);
+		return max;
+	}
+
+	public static <T> void printMax(T a, T b, T c, T max) {
+		System.out.printf("Max of %s, %s and %s is %s\n", a, b, c, max);
 	}
 
 	public static void main(String[] args) {
-		System.out.println(" Welcome To Maximum Computation Of Three Numbers Using Java Generics ");
-		String firstString = "jai", secondString = "Shree", thirdString = "Ram";
-		new Generics<String>(firstString, secondString, thirdString).testMaximum();
+		Integer firstInt = 1, secondInt = 2, thirdInt = 3;
+		Float firstFloat = 1.2f, secondFloat = 8.2f, thirdFloat = 60.2f;
+		String firstString = "Jai", secondString = "Shree", thirdString = "Ram";
+
+		Generics<String> refactorGenericClass = new Generics();
+		Generics<Integer> refactorGenericClass1 = new Generics();
+		Generics<Float> refactorGenericClass11 = new Generics();
+
+		System.out.println(refactorGenericClass.getMax(firstString, secondString, thirdString));
+
 	}
 }
