@@ -30,7 +30,7 @@ public class Generics<T extends Comparable<T>> {
 
 	public static void main(String[] args) {
 		System.out.println(" Welcome To Maximum Computation Of Three Numbers Using Java Generics ");
-		Float number1 = 13f, number2 = 9f, number3 = 5f;
-		new Generics<Float>(number1, number2, number3).testMaximum();
+		String firstString = "jai", secondString = "Shree", thirdString = "Ram";
+		new Generics<String>(firstString, secondString, thirdString).testMaximum();
 	}
 }
